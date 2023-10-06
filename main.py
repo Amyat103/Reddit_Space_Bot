@@ -2,6 +2,8 @@ import praw
 import secret
 import requests
 import json
+from PIL import Image
+import os
 
 #PRAW
 def reddit_post(pic):
@@ -33,7 +35,7 @@ def reddit_post(pic):
     image = r"/Users/david/Desktop/space pic.jpeg"
 
     #Post NASA Image of the day
-    reddit.subreddit(sub_title).submit_image(title, pic)
+    reddit.subreddit(sub_title).submit_image(title, image_path=pic)
 
     #Post NASA Monthly Image recap
     # image1 = "/Users/david/Desktop/space pic.jpeg"
@@ -65,10 +67,15 @@ print(r.status_code)
 print(r)
 response = json.loads(r.text)
 print(response)
-pic = response["hdurl"]
-print(pic)
+img_link = response["hdurl"]
+print(img_link)
+
+#opening image from url to post
+image_res = requests.get(img_link)
+with open("APOD.jpg", "wb") as image:
+    image.write(image_res.content)
 
 #use nasa jpg pink to post on subreddit
-reddit_post(pic)
+reddit_post("APOD.jpg")
 
-
+os.remove("APOD.jpg")

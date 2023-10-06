@@ -1,6 +1,7 @@
 import praw
 import secret
 
+#Authenticating via OAuth
 reddit = praw.Reddit(
     client_id=secret.client_id,
     client_secret=secret.client_secret,
@@ -8,6 +9,7 @@ reddit = praw.Reddit(
     user_agent="my user agent",
     username=secret.username,
 )
+print(reddit.user.me())
 
 #authorized instance instead of read-only
 print(reddit.read_only)
@@ -22,3 +24,9 @@ print(subreddit.description)
 redditor = reddit.redditor(secret.username)
 print(redditor.link_karma)
 
+sub_title = "SpaceGalleries"
+title = "Test"
+image = r"/Users/david/Desktop/space pic.jpeg"
+
+#posting Single Image
+reddit.subreddit(sub_title).submit_image(title, image)

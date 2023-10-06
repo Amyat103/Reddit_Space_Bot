@@ -28,5 +28,22 @@ sub_title = "SpaceGalleries"
 title = "Test"
 image = r"/Users/david/Desktop/space pic.jpeg"
 
-#posting Single Image
-reddit.subreddit(sub_title).submit_image(title, image)
+#Post NASA Image of the day
+# reddit.subreddit(sub_title).submit_image(title, image)
+
+#Post NASA Monthly Image recap
+image1 = "/Users/david/Desktop/space pic.jpeg"
+image2 = "/Users/david/Desktop/Galaxy_clusters_in_the_cosmic_web.jpg"
+image3 = "/Users/david/Downloads/345984844_770510188014807_6813628122632339994_n.png"
+images_gal = [
+    {"image_path": image1,
+     "caption": "This is galaxy",
+     },
+    {"image_path": image2,
+     "caption": "This is also galaxy",
+     },
+    {"image_path": image3,
+     "caption": "This is weird tree",
+     },
+]
+reddit.subreddit(sub_title).submit_gallery(title, images_gal)

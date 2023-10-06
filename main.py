@@ -2,7 +2,6 @@ import praw
 import secret
 import requests
 import json
-from PIL import Image
 import os
 
 #PRAW
@@ -31,7 +30,7 @@ def reddit_post(pic):
     print(redditor.link_karma)
 
     sub_title = "SpaceGalleries"
-    title = "APOD TEST"
+    title = "NASA'S Astronomy Picture of the Day"
     image = r"/Users/david/Desktop/space pic.jpeg"
 
     #Post NASA Image of the day
@@ -57,25 +56,30 @@ def reddit_post(pic):
 #NASA API
 #get pic from nasa post on reddit daily
 
-#APOD REQUEST
-APOD_params = {
-    "date": "",
-    "api_key": secret.NASA_API,
-}
-r = requests.get("https://api.nasa.gov/planetary/apod", params=APOD_params)
-print(r.status_code)
-print(r)
-response = json.loads(r.text)
-print(response)
-img_link = response["hdurl"]
-print(img_link)
+def apod_request():
+    #APOD REQUEST
+    APOD_params = {
+        "date": "",
+        "api_key": secret.NASA_API,
+    }
+    r = requests.get("https://api.nasa.gov/planetary/apod", params=APOD_params)
+    print(r.status_code)
+    print(r)
+    response = json.loads(r.text)
+    print(response)
+    #getting the hd link
+    img_link = response["hdurl"]
+    print(img_link)
 
-#opening image from url to post
-image_res = requests.get(img_link)
-with open("APOD.jpg", "wb") as image:
-    image.write(image_res.content)
+    #opening image from url to post
+    image_res = requests.get(img_link)
+    with open("APOD.jpg", "wb") as image:
+        image.write(image_res.content)
+    return "APOD.jpg"
 
 #use nasa jpg pink to post on subreddit
-reddit_post("APOD.jpg")
+apod_img = apod_request()
+reddit_post(apod_img)
 
+#deleting the image after posting
 os.remove("APOD.jpg")

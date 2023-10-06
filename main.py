@@ -56,7 +56,15 @@ def reddit_post():
 #get pic from nasa post on reddit daily
 
 #APOD REQUEST
-r = requests.get(f"https://api.nasa.gov/planetary/apod?api_key={secret.NASA_API}")
+APOD_params = {
+    "date": "",
+    "api_key": secret.NASA_API,
+}
+r = requests.get("https://api.nasa.gov/planetary/apod", params=APOD_params)
 print(r.status_code)
+print(r)
+response = json.loads(r.text)
+print(response)
+
 
 

@@ -59,16 +59,16 @@ def reddit_post_rand(list):
     image3 = "APOD2.jpg"
     images_gal = [
         {"image_path": image1,
-         "caption": list[0]["Explanation"],
+         "caption": list[0]["Explanation"][:60],
          },
         {"image_path": image2,
-         "caption": list[0]["Explanation"],
+         "caption": list[0]["Explanation"][:60],
          },
         {"image_path": image3,
-         "caption": list[0]["Explanation"],
+         "caption": list[0]["Explanation"][:60],
          },
     ]
-    reddit.subreddit(subreddit).submit_gallery(title, images_gal)
+    reddit.subreddit("Astronomy_Pics").submit_gallery(title, images_gal)
 
 
 #NASA API
@@ -133,7 +133,7 @@ def apod_ran_req():
 
 ran_list_apod = apod_ran_req()
 
-
+print(ran_list_apod)
 
 reddit_post_rand(ran_list_apod)
 

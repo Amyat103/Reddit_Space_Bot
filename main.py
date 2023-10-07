@@ -33,7 +33,7 @@ def reddit_post(pic):
     today = datetime.date.today()
 
     sub_title = "SpaceGalleries"
-    title = f"[{today}] NASA'S Astronomy Picture of the Day"
+    title = f"[{today}] NASA Astronomy Picture Of the Day"
     image = r"/Users/david/Desktop/space pic.jpeg"
 
     #Post NASA Image of the day
@@ -88,7 +88,7 @@ reddit_post(apod_img)
 os.remove("APOD.jpg")
 
 
-#TO GENERATE CODE
+# # TO GENERATE CODE
 # reddit = praw.Reddit(
 #         client_id=secret.client_id,
 #         client_secret=secret.client_secret,
@@ -99,3 +99,4 @@ os.remove("APOD.jpg")
 #     )
 #
 # print(reddit.auth.url(scopes=["identity"], state=secret.STATE, duration="permanent"))
+#

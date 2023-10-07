@@ -3,6 +3,7 @@ import secret
 import requests
 import json
 import os
+import datetime
 
 #PRAW
 def reddit_post(pic):
@@ -29,8 +30,10 @@ def reddit_post(pic):
     redditor = reddit.redditor(secret.username)
     print(redditor.link_karma)
 
+    today = datetime.date.today()
+
     sub_title = "SpaceGalleries"
-    title = "NASA'S Astronomy Picture of the Day "
+    title = f"[{today}] NASA'S Astronomy Picture of the Day"
     image = r"/Users/david/Desktop/space pic.jpeg"
 
     #Post NASA Image of the day

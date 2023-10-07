@@ -69,7 +69,7 @@ def reddit_post_rand(list):
          "caption": "This is weird tree",
          },
     ]
-    reddit.subreddit(sub_title).submit_gallery(title, images_gal)
+    reddit.subreddit(subreddit).submit_gallery(title, images_gal)
 
 
 #NASA API
@@ -105,8 +105,8 @@ def apod_ran_req():
     r = requests.get("https://api.nasa.gov/planetary/apod", params=ran_params)
     response = json.loads(r.text)
     ran_im_links = []
+    e = 0
     for dict in response:
-        e = 1
         if "hdurl" in dict:
             url = dict["hdurl"]
         else:
@@ -118,10 +118,14 @@ def apod_ran_req():
             "Date": date,
             "Explanation": expl,
         }
+
         ran_im_links.append(single_data)
+
+        image_res = requests.get(url)
+
         image_name = f"APOD{e}.jpg"
         with open(image_name, "wb") as image:
-            image.write(image_name.content)
+            image.write(image_res.content)
         e += 1
     return ran_im_links
 
@@ -133,6 +137,9 @@ ran_list_apod = apod_ran_req()
 
 
 reddit_post_rand(ran_list_apod)
+
+for int in range(3):
+    os.remove(f"APOD{int}.jpg")
 
 
 

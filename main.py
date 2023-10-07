@@ -106,6 +106,7 @@ def apod_ran_req():
     response = json.loads(r.text)
     ran_im_links = []
     for dict in response:
+        e = 1
         if "hdurl" in dict:
             url = dict["hdurl"]
         else:
@@ -118,7 +119,12 @@ def apod_ran_req():
             "Explanation": expl,
         }
         ran_im_links.append(single_data)
+        image_name = f"APOD{e}.jpg"
+        with open(image_name, "wb") as image:
+            image.write(image_name.content)
+        e += 1
     return ran_im_links
+
 
 
 

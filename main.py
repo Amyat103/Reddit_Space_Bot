@@ -4,8 +4,6 @@ import requests
 import json
 import os
 import datetime
-from PIL import Image
-from io import BytesIO
 
 #PRAW
 def reddit_post_daily(pic):
@@ -52,21 +50,22 @@ def reddit_post_rand(list):
     )
     print(reddit.user.me())
 
+    title = "Daily 3 Random APOD"
     subreddit = reddit.subreddit("Astronomy_Pics")
 
     #Post CATALOG
-    image1 = "/Users/david/Desktop/space pic.jpeg"
-    image2 = "/Users/david/Desktop/Galaxy_clusters_in_the_cosmic_web.jpg"
-    image3 = "/Users/david/Downloads/345984844_770510188014807_6813628122632339994_n.png"
+    image1 = "APOD0.jpg"
+    image2 = "APOD1.jpg"
+    image3 = "APOD2.jpg"
     images_gal = [
         {"image_path": image1,
-         "caption": "This is galaxy",
+         "caption": list[0]["Explanation"],
          },
         {"image_path": image2,
-         "caption": "This is also galaxy",
+         "caption": list[0]["Explanation"],
          },
         {"image_path": image3,
-         "caption": "This is weird tree",
+         "caption": list[0]["Explanation"],
          },
     ]
     reddit.subreddit(subreddit).submit_gallery(title, images_gal)
@@ -154,9 +153,7 @@ for int in range(3):
 # os.remove("APOD.jpg")
 
 #daily random image from NASA
-
-
-
+#-------------------------------------
 
 # # TO GENERATE CODE (AUTH)
 # reddit = praw.Reddit(
@@ -170,7 +167,7 @@ for int in range(3):
 #
 # print(reddit.auth.url(scopes=["identity"], state=secret.STATE, duration="permanent"))
 #
-
+#---------------------------------------
 
 # (MONTHLY CATALOG) MAYBE ADD LATER
 # def apod_request_monthly():

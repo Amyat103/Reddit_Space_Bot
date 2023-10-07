@@ -93,16 +93,25 @@ def apod_ran_req():
     }
     r = requests.get("https://api.nasa.gov/planetary/apod", params=ran_params)
     response = json.loads(r.text)
-    ran_images = []
+    ran_im_links = []
     for dict in response:
         if "hdurl" in dict:
-            ran_images.append(dict["hdurl"])
+            url = dict["hdurl"]
         else:
-            ran_images.append(dict["url"])
-    return ran_images
+            url = dict["url"]
+        date = dict["date"]
+        expl = dict["explanation"]
+        single_data = {
+            "URL": url,
+            "Date": date,
+            "Explanation": expl,
+        }
+        ran_im_links.append(single_data)
+    # for r, int in response, range(3):
+    return ran_im_links
 
-ran_images = apod_ran_req()
-print(ran_images)
+print(apod_ran_req())
+
 
 
 
@@ -147,3 +156,4 @@ print(ran_images)
 #     print(response)
 
 # print(apod_request_monthly())
+

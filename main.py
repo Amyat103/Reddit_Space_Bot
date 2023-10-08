@@ -4,10 +4,12 @@ import requests
 import json
 import os
 import datetime
+import schedule
+import time
 
 #PRAW
 def reddit_post_daily(pic):
-    #Authenticating via OAuth
+    #Obtaining Reddit Instance
     reddit = praw.Reddit(
         client_id=secret.client_id,
         client_secret=secret.client_secret,
@@ -41,6 +43,7 @@ def reddit_post_daily(pic):
 
 #Post gallery of random
 def reddit_post_rand(list):
+    #Obtaining Reddit Instance
     reddit = praw.Reddit(
         client_id=secret.client_id,
         client_secret=secret.client_secret,
@@ -73,7 +76,6 @@ def reddit_post_rand(list):
 
 #NASA API
 #get pic from nasa post on reddit daily
-
 def apod_request_single():
     #APOD REQUEST
     APOD_params = {
@@ -129,28 +131,32 @@ def apod_ran_req():
     return ran_im_links
 
 
-
-
 ran_list_apod = apod_ran_req()
 
 print(ran_list_apod)
 
 reddit_post_rand(ran_list_apod)
 
-for int in range(3):
-    os.remove(f"APOD{int}.jpg")
+def remove_gal():
+    for int in range(3):
+        os.remove(f"APOD{int}.jpg")
 
+apod_img = apod_request_single()
 
+schedule.every().day.at("12:00").do(reddit_post_daily, apod_img)
+schedule.every().day.at("12:05").do(os.remove("APOD.jpg"))
+schedule.every().day.at("17:00").do(reddit_post_rand, ran_list_apod)
+schedule.every().day.at("17:05").do(remove_gal)
 
-
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
 
 #use nasa response to post on subreddit
 #daily single post
-# apod_img = apod_request_single()
-# reddit_post_daily(apod_img)
-#deleting the image after posting
-# os.remove("APOD.jpg")
+# deleting the image after posting
+os.remove("APOD.jpg")
 
 #daily random image from NASA
 #-------------------------------------

@@ -13,11 +13,11 @@ def reddit_post_daily():
     apod_img = apod_request_single()
     #Obtaining Reddit Instance
     reddit = praw.Reddit(
-        client_id=secret.client_id,
-        client_secret=secret.client_secret,
-        password=secret.password,
+        client_id=os.environ.get('CLIENT_ID'),
+        client_secret=os.environ.get('CLIENT_SECRET'),
+        password=os.environ.get('PASSWORD'),
         user_agent="bot by u/Space_Picture_Bot",
-        username=secret.username,
+        username=os.environ.get('USERNAME'),
     )
     print(reddit.user.me())
 
@@ -38,11 +38,11 @@ def reddit_post_rand():
     ran_list_apod = apod_ran_req()
     #Obtaining Reddit Instance
     reddit = praw.Reddit(
-        client_id=secret.client_id,
-        client_secret=secret.client_secret,
-        password=secret.password,
+        client_id=os.environ.get('CLIENT_ID'),
+        client_secret=os.environ.get('CLIENT_SECRET'),
+        password=os.environ.get('PASSWORD'),
         user_agent="bot by u/Space_Picture_Bot",
-        username=secret.username,
+        username=os.environ.get('USERNAME'),
     )
     print(reddit.user.me())
 
@@ -72,7 +72,7 @@ def apod_request_single():
     #APOD REQUEST
     APOD_params = {
         "date": "",
-        "api_key": secret.NASA_API,
+        "api_key": os.environ.get('NASA_API'),
     }
     r = requests.get("https://api.nasa.gov/planetary/apod", params=APOD_params)
     print(r.status_code)
@@ -94,7 +94,7 @@ def apod_request_single():
 def apod_ran_req():
     ran_params = {
         "count": 3,
-        "api_key": secret.NASA_API,
+        "api_key": os.environ.get('NASA_API'),
     }
     r = requests.get("https://api.nasa.gov/planetary/apod", params=ran_params)
     response = json.loads(r.text)

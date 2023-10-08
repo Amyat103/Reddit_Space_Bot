@@ -23,16 +23,6 @@ def reddit_post_daily():
     #authorized instance instead of read-only
     print(reddit.read_only)
 
-    #testing subreddit created for this bot
-    #obtaining subreddit
-    subreddit = reddit.subreddit("SpaceGalleries")
-    # print(subreddit.display_name)
-    # print(subreddit.description)
-
-    #obtaining submission instance from a sub
-    redditor = reddit.redditor(secret.username)
-    print(redditor.link_karma)
-
     today = datetime.date.today()
 
     sub_title = "Astronomy_Pics"

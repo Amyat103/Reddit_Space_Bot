@@ -32,7 +32,6 @@ def reddit_post_daily():
     title = f"[{today}] NASA Astronomy Picture Of the Day"
 
     #Post NASA Image of the day
-    reddit.subreddit(sub_title).submit_image(title, image_path=apod_img)
     submission = reddit.subreddit(sub_title).submit_image(title, image_path=apod_img)
     submission.reply(f"{explanation}")
 
@@ -145,16 +144,16 @@ def remove_pic():
 def main():
     print("Script has started.")
     # daily single post
-    schedule.every().day.at("12:00").do(reddit_post_daily)
+    schedule.every().day.at("00:00").do(reddit_post_daily)
 
     # deleting the image after posting
-    schedule.every().day.at("12:01").do(remove_pic)
+    schedule.every().day.at("00:01").do(remove_pic)
 
     # daily gallery post
-    schedule.every().day.at("17:00").do(reddit_post_rand)
+    schedule.every().day.at("00:01").do(reddit_post_rand)
 
     # deleting the image after posting
-    schedule.every().day.at("17:00").do(remove_gal)
+    schedule.every().day.at("00:05").do(remove_gal)
 
     while True:
         schedule.run_pending()

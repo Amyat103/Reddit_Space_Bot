@@ -7,6 +7,7 @@ import datetime
 import schedule
 import time
 
+
 #PRAW
 def reddit_post_daily():
     apod_img = apod_request_single()
@@ -66,7 +67,6 @@ def reddit_post_rand():
     reddit.subreddit(subreddit).submit_gallery(title, images_gal)
 
 
-#NASA API
 #get pic from nasa post on reddit daily
 def apod_request_single():
     #APOD REQUEST
@@ -88,6 +88,7 @@ def apod_request_single():
     with open("APOD.jpg", "wb") as image:
         image.write(image_res.content)
     return "APOD.jpg"
+
 
 #APOD Request 3 random
 def apod_ran_req():
@@ -122,9 +123,11 @@ def apod_ran_req():
         e += 1
     return ran_im_links
 
+
 def remove_gal():
     for int in range(3):
         os.remove(f"APOD{int}.jpg")
+
 
 def remove_pic():
     os.remove("APOD.jpg")
@@ -150,12 +153,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-    reddit_post_rand()
-    reddit_post_daily()
-
-
-
-#use nasa response to post on subreddit
 
 
 #daily random image from NASA

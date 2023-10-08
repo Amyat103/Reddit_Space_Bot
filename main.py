@@ -141,11 +141,21 @@ def remove_gal():
     for int in range(3):
         os.remove(f"APOD{int}.jpg")
 
+def remove_pic():
+    os.remove("APOD.jpg")
+
 apod_img = apod_request_single()
 
+#daily single post
 schedule.every().day.at("12:00").do(reddit_post_daily, apod_img)
-schedule.every().day.at("12:05").do(os.remove("APOD.jpg"))
+
+# deleting the image after posting
+schedule.every().day.at("12:05").do(remove_pic)
+
+#daily gallery post
 schedule.every().day.at("17:00").do(reddit_post_rand, ran_list_apod)
+
+# deleting the image after posting
 schedule.every().day.at("17:05").do(remove_gal)
 
 while True:
@@ -154,9 +164,8 @@ while True:
 
 
 #use nasa response to post on subreddit
-#daily single post
-# deleting the image after posting
-os.remove("APOD.jpg")
+
+
 
 #daily random image from NASA
 #-------------------------------------

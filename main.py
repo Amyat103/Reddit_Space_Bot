@@ -33,6 +33,9 @@ def reddit_post_daily():
 
     #Post NASA Image of the day
     reddit.subreddit(sub_title).submit_image(title, image_path=apod_img)
+    submission = reddit.subreddit(sub_title).submit_image(title, image_path=apod_img)
+    submission.reply(f"{explanation}")
+
 
 
 #Post gallery of random

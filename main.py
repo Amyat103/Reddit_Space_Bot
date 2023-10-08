@@ -12,7 +12,7 @@ time.tzset()
 
 #PRAW
 def reddit_post_daily():
-    apod_img = apod_request_single()
+    apod_img, explanation = apod_request_single()
     #Obtaining Reddit Instance
     reddit = praw.Reddit(
         client_id=os.environ.get('CLIENT_ID'),
@@ -85,11 +85,14 @@ def apod_request_single():
     img_link = response["hdurl"]
     print(img_link)
 
+    explanation = response["explanation"]
+
+
     #opening image from url to post
     image_res = requests.get(img_link)
     with open("APOD.jpg", "wb") as image:
         image.write(image_res.content)
-    return "APOD.jpg"
+    return "APOD.jpg", explanation
 
 
 #APOD Request 3 random

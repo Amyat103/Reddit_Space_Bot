@@ -9,6 +9,7 @@ import time
 
 #PRAW
 def reddit_post_daily(pic):
+    apod_img = apod_request_single()
     #Obtaining Reddit Instance
     reddit = praw.Reddit(
         client_id=secret.client_id,
@@ -34,15 +35,16 @@ def reddit_post_daily(pic):
 
     today = datetime.date.today()
 
-    sub_title = "SpaceGalleries"
+    sub_title = "Astronomy_Pics"
     title = f"[{today}] NASA Astronomy Picture Of the Day"
 
     #Post NASA Image of the day
-    reddit.subreddit(sub_title).submit_image(title, image_path=pic)
+    reddit.subreddit(sub_title).submit_image(title, image_path=apod_img)
 
 
 #Post gallery of random
 def reddit_post_rand(list):
+    ran_list_apod = apod_ran_req()
     #Obtaining Reddit Instance
     reddit = praw.Reddit(
         client_id=secret.client_id,
@@ -62,13 +64,13 @@ def reddit_post_rand(list):
     image3 = "APOD2.jpg"
     images_gal = [
         {"image_path": image1,
-         "caption": list[0]["Explanation"][:60],
+         "caption": list[0]["Explanation"][:180],
          },
         {"image_path": image2,
-         "caption": list[0]["Explanation"][:60],
+         "caption": list[0]["Explanation"][:180],
          },
         {"image_path": image3,
-         "caption": list[0]["Explanation"][:60],
+         "caption": list[0]["Explanation"][:180],
          },
     ]
     reddit.subreddit("Astronomy_Pics").submit_gallery(title, images_gal)
@@ -129,13 +131,6 @@ def apod_ran_req():
             image.write(image_res.content)
         e += 1
     return ran_im_links
-
-
-ran_list_apod = apod_ran_req()
-
-print(ran_list_apod)
-
-reddit_post_rand(ran_list_apod)
 
 def remove_gal():
     for int in range(3):

@@ -8,7 +8,7 @@ import schedule
 import time
 
 #PRAW
-def reddit_post_daily(pic):
+def reddit_post_daily():
     apod_img = apod_request_single()
     #Obtaining Reddit Instance
     reddit = praw.Reddit(
@@ -26,8 +26,8 @@ def reddit_post_daily(pic):
     #testing subreddit created for this bot
     #obtaining subreddit
     subreddit = reddit.subreddit("SpaceGalleries")
-    print(subreddit.display_name)
-    print(subreddit.description)
+    # print(subreddit.display_name)
+    # print(subreddit.description)
 
     #obtaining submission instance from a sub
     redditor = reddit.redditor(secret.username)
@@ -43,7 +43,7 @@ def reddit_post_daily(pic):
 
 
 #Post gallery of random
-def reddit_post_rand(list):
+def reddit_post_rand():
     ran_list_apod = apod_ran_req()
     #Obtaining Reddit Instance
     reddit = praw.Reddit(
@@ -56,7 +56,7 @@ def reddit_post_rand(list):
     print(reddit.user.me())
 
     title = "Daily 3 Random APOD"
-    subreddit = reddit.subreddit("Astronomy_Pics")
+    subreddit = "Astronomy_Pics"
 
     #Post CATALOG
     image1 = "APOD0.jpg"
@@ -64,16 +64,16 @@ def reddit_post_rand(list):
     image3 = "APOD2.jpg"
     images_gal = [
         {"image_path": image1,
-         "caption": list[0]["Explanation"][:180],
+         "caption": ran_list_apod[0]["Explanation"][:180],
          },
         {"image_path": image2,
-         "caption": list[0]["Explanation"][:180],
+         "caption": ran_list_apod[1]["Explanation"][:180],
          },
         {"image_path": image3,
-         "caption": list[0]["Explanation"][:180],
+         "caption": ran_list_apod[2]["Explanation"][:180],
          },
     ]
-    reddit.subreddit("Astronomy_Pics").submit_gallery(title, images_gal)
+    reddit.subreddit(subreddit).submit_gallery(title, images_gal)
 
 
 #NASA API
@@ -160,10 +160,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+    reddit_post_rand()
+    reddit_post_daily()
+
 
 
 #use nasa response to post on subreddit
-
 
 
 #daily random image from NASA

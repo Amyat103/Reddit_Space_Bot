@@ -1,5 +1,4 @@
 import praw
-import secret
 import requests
 import json
 import os
@@ -7,6 +6,9 @@ import datetime
 import schedule
 import time
 
+#PRAW
+os.environ["TZ"] = "America/New_York"
+time.tzset()
 
 #PRAW
 def reddit_post_daily():
@@ -134,25 +136,31 @@ def remove_pic():
 
 
 def main():
+    print("Script has started.")
     # daily single post
-    schedule.every().day.at("22:20").do(reddit_post_daily)
+    schedule.every().day.at("12:00").do(reddit_post_daily)
 
     # deleting the image after posting
-    schedule.every().day.at("22:25").do(remove_pic)
+    schedule.every().day.at("12:01").do(remove_pic)
 
     # daily gallery post
     schedule.every().day.at("17:00").do(reddit_post_rand)
 
     # deleting the image after posting
-    schedule.every().day.at("17:05").do(remove_gal)
+    schedule.every().day.at("17:00").do(remove_gal)
 
     while True:
         schedule.run_pending()
-        time.sleep(1)
+        time.sleep(40)
 
-
+print("checking")
 if __name__ == "__main__":
     main()
+
+
+
+
+
 
 
 #daily random image from NASA

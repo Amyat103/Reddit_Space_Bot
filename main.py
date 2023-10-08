@@ -144,23 +144,27 @@ def remove_gal():
 def remove_pic():
     os.remove("APOD.jpg")
 
-apod_img = apod_request_single()
 
-#daily single post
-schedule.every().day.at("12:00").do(reddit_post_daily, apod_img)
+def main():
+    # daily single post
+    schedule.every().day.at("22:20").do(reddit_post_daily)
 
-# deleting the image after posting
-schedule.every().day.at("12:05").do(remove_pic)
+    # deleting the image after posting
+    schedule.every().day.at("22:25").do(remove_pic)
 
-#daily gallery post
-schedule.every().day.at("17:00").do(reddit_post_rand, ran_list_apod)
+    # daily gallery post
+    schedule.every().day.at("17:00").do(reddit_post_rand)
 
-# deleting the image after posting
-schedule.every().day.at("17:05").do(remove_gal)
+    # deleting the image after posting
+    schedule.every().day.at("17:05").do(remove_gal)
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
+
+if __name__ == "__main__":
+    main()
 
 
 #use nasa response to post on subreddit

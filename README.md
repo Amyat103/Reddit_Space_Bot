@@ -1,8 +1,16 @@
 # Reddit Space Picture Bot
-Reddit Bot that is built with PRAW <br>
+Reddit Bot built with Python and PRAW <br> This program will post NASA's APOD(Astronomy Picture of the Day) at 12 p.m. each day and will post 3 random APODs at 5p.m. each day. The pictures are requested from NASA's API.
 This program is built following the PRAW documentation(https://praw.readthedocs.io/en/stable/index.html) <br>
-the purpose of this bot is to post space-related pictures <br>
-<br>
+the purpose of this bot is to post and share space-related pictures <br>
+
+### Installing PRAW and Requests
+
+These are the libraries you'll need
+
+```
+pip install praw
+pip install requests
+```
 
 ## Deployment
 This bot is currently deployed on Python Anytime (www.pythonanywhere.com)
@@ -20,3 +28,4 @@ This bot is currently deployed on Python Anytime (www.pythonanywhere.com)
 <img width="659" alt="Screenshot 2023-10-09 at 5 55 38 PM" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/ef2b59fb-5448-4c15-9286-71b49a82ead8">
 
 <img width="375" alt="Screenshot 2023-10-09 at 5 55 48 PM" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/9aa3571c-3fa4-4b4b-9b64-be080f6a2e14">
+

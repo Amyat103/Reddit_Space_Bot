@@ -60,18 +60,17 @@ def reddit_post_rand():
     image3 = "APOD2.jpg"
     images_gal = [
         {"image_path": image1,
-         "caption": ran_list_apod[0]["Explanation"][:180],
+         "caption": ran_list_apod[0]["explanation"][:180],
          },
         {"image_path": image2,
-         "caption": ran_list_apod[1]["Explanation"][:180],
+         "caption": ran_list_apod[1]["explanation"][:180],
          },
         {"image_path": image3,
-         "caption": ran_list_apod[2]["Explanation"][:180],
+         "caption": ran_list_apod[2]["explanation"][:180],
          },
     ]
     submission = reddit.subreddit(subreddit).submit_gallery(title, images_gal)
-    submission.reply(f"Pic 1: {ran_list_apod[0]['Explanation']}\n\nPic 2: {ran_list_apod[1]['Explanation']}\n\nPic 3: {ran_list_apod[2]['Explanation']}")
-
+    submission.reply(f"Pic 1: {ran_list_apod[0]['explanation']}\n\nPic 2: {ran_list_apod[1]['explanation']}\n\nPic 3: {ran_list_apod[2]['explanation']}")
 
 
 #get pic from nasa post on reddit daily
@@ -108,21 +107,22 @@ def apod_ran_req():
     }
     r = requests.get("https://api.nasa.gov/planetary/apod", params=ran_params)
     response = json.loads(r.text)
+    print(response)
     ran_im_links = []
     e = 0
-    for dict in response:
-        if "hdurl" in dict:
-            url = dict["hdurl"]
+    for item in response:
+        if "hdurl" in item:
+            url = item["hdurl"]
         else:
-            url = dict["url"]
-        date = dict["date"]
-        expl = dict["explanation"]
-        title = dict["title"]
+            url = item["url"]
+        date = item["date"]
+        expl = item["explanation"]
+        title = item["title"]
         single_data = {
             "URL": url,
-            "Date": date,
-            "Explanation": expl,
-            "Title": title,
+            "data": date,
+            "explanation": expl,
+            "title": title,
         }
 
         ran_im_links.append(single_data)
@@ -158,6 +158,9 @@ def main():
 
     # deleting the image after posting
     schedule.every().day.at("00:05").do(remove_gal)
+
+    reddit_post_rand()
+    remove_gal()
 
     while True:
         schedule.run_pending()

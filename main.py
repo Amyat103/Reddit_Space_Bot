@@ -12,7 +12,7 @@ time.tzset()
 
 #PRAW
 def reddit_post_daily():
-    apod_img, explanation = apod_request_single()
+    apod_img, explanation, title = apod_request_single()
     #Obtaining Reddit Instance
     reddit = praw.Reddit(
         client_id=os.environ.get('CLIENT_ID'),
@@ -29,7 +29,7 @@ def reddit_post_daily():
     today = datetime.date.today()
 
     sub_title = "Astronomy_Pics"
-    title = f"[{today}] NASA Astronomy Picture Of the Day"
+    title = f"[{today}] NASA Astronomy Picture Of the Day. Title: {title}"
 
     #Post NASA Image of the day
     submission = reddit.subreddit(sub_title).submit_image(title, image_path=apod_img)
@@ -51,7 +51,7 @@ def reddit_post_rand():
     )
     print(reddit.user.me())
 
-    title = "Daily 3 Random APOD"
+    title = f"Daily 3 Random APOD, Pic 1 Title:{ran_list_apod[0]['title']}, Pic 2 Title:{ran_list_apod[1]['title']}, Pic 3 Title:{ran_list_apod[2]['title']}"
     subreddit = "Astronomy_Pics"
 
     #Post CATALOG
@@ -89,13 +89,13 @@ def apod_request_single():
     print(img_link)
 
     explanation = response["explanation"]
-
+    title = response["title"]
 
     #opening image from url to post
     image_res = requests.get(img_link)
     with open("APOD.jpg", "wb") as image:
         image.write(image_res.content)
-    return "APOD.jpg", explanation
+    return "APOD.jpg", explanation, title
 
 
 #APOD Request 3 random
@@ -115,10 +115,12 @@ def apod_ran_req():
             url = dict["url"]
         date = dict["date"]
         expl = dict["explanation"]
+        title = dict["title"]
         single_data = {
             "URL": url,
             "Date": date,
             "Explanation": expl,
+            "Title": title,
         }
 
         ran_im_links.append(single_data)

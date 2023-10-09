@@ -69,7 +69,9 @@ def reddit_post_rand():
          "caption": ran_list_apod[2]["Explanation"][:180],
          },
     ]
-    reddit.subreddit(subreddit).submit_gallery(title, images_gal)
+    submission = reddit.subreddit(subreddit).submit_gallery(title, images_gal)
+    submission.reply(f"Pic 1: {ran_list_apod[0]['Explanation']}\n\nPic 2: {ran_list_apod[1]['Explanation']}\n\nPic 3: {ran_list_apod[2]['Explanation']}")
+
 
 
 #get pic from nasa post on reddit daily

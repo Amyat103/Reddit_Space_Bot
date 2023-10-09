@@ -6,7 +6,7 @@ import datetime
 import schedule
 import time
 
-#PRAW
+#Timezone setup for PythonAnywhere Server
 os.environ["TZ"] = "America/New_York"
 time.tzset()
 

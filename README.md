@@ -1,5 +1,5 @@
 # Reddit Space Picture Bot
-Reddit Bot built with Python and PRAW <br> This program will post NASA's APOD(Astronomy Picture of the Day) at 12 p.m. each day and will post 3 random APODs at 5p.m. each day. The pictures are requested from NASA's API.
+Reddit Bot built with Python and PRAW <br> This program will post NASA's APOD(Astronomy Picture of the Day) at 12 p.m. each day and will post 3 random APODs at 5 p.m. each day. The pictures are requested from NASA's API. The requested pictures are downloaded, posted and immediately deleted after posting so no space is required.
 This program is built following the PRAW documentation(https://praw.readthedocs.io/en/stable/index.html) <br>
 the purpose of this bot is to post and share space-related pictures <br>
 
@@ -14,6 +14,15 @@ pip install requests
 
 ## Deployment
 This bot is currently deployed on Python Anytime (www.pythonanywhere.com)
+
+Example:
+With these lines inside main(), the program will check every 40 sec if it's time to execute reddit_post_dailt()
+```
+schedule.every().day.at("12:00").do(reddit_post_daily)
+while True:
+        schedule.run_pending()
+        time.sleep(40)
+```
 <br>
 
 ## Example
@@ -27,5 +36,5 @@ This bot is currently deployed on Python Anytime (www.pythonanywhere.com)
 <br>
 <img width="659" alt="Screenshot 2023-10-09 at 5 55 38 PM" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/ef2b59fb-5448-4c15-9286-71b49a82ead8">
 
-<img width="375" alt="Screenshot 2023-10-09 at 5 55 48 PM" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/9aa3571c-3fa4-4b4b-9b64-be080f6a2e14">
+<img width="500" alt="Screenshot 2023-10-09 at 5 55 48 PM" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/9aa3571c-3fa4-4b4b-9b64-be080f6a2e14">
 

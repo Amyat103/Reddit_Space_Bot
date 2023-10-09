@@ -163,9 +163,6 @@ def main():
     # deleting the image after posting
     schedule.every().day.at("00:05").do(remove_gal)
 
-    reddit_post_rand()
-    remove_gal()
-
     while True:
         schedule.run_pending()
         time.sleep(40)

@@ -34,6 +34,7 @@ def reddit_post_daily():
     #Post NASA Image of the day
     submission = reddit.subreddit(sub_title).submit_image(title, image_path=apod_img)
     submission.reply(f"Explanation: {explanation}")
+    print("Posted APOD and comment")
 
 
 
@@ -71,6 +72,7 @@ def reddit_post_rand():
     ]
     submission = reddit.subreddit(subreddit).submit_gallery(title, images_gal)
     submission.reply(f"Pic 1 [{ran_list_apod[0]['title']}]: {ran_list_apod[0]['explanation']}\n\nPic 2 [{ran_list_apod[1]['title']}]: {ran_list_apod[1]['explanation']}\n\nPic 3[{ran_list_apod[2]['title']}]: {ran_list_apod[2]['explanation']}")
+    print("Posted Rand Gallery and comment")
 
 
 #get pic from nasa post on reddit daily
@@ -139,10 +141,12 @@ def apod_ran_req():
 def remove_gal():
     for int in range(3):
         os.remove(f"APOD{int}.jpg")
+    print("removed gallery")
 
 
 def remove_pic():
     os.remove("APOD.jpg")
+    print("removed APOD")
 
 
 def main():

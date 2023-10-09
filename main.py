@@ -51,7 +51,7 @@ def reddit_post_rand():
     )
     print(reddit.user.me())
 
-    title = f"Daily 3 Random APOD, Pic 1 Title:{ran_list_apod[0]['title']}, Pic 2 Title:{ran_list_apod[1]['title']}, Pic 3 Title:{ran_list_apod[2]['title']}"
+    title = f"Daily 3 Random APOD"
     subreddit = "Astronomy_Pics"
 
     #Post CATALOG
@@ -70,7 +70,7 @@ def reddit_post_rand():
          },
     ]
     submission = reddit.subreddit(subreddit).submit_gallery(title, images_gal)
-    submission.reply(f"Pic 1: {ran_list_apod[0]['explanation']}\n\nPic 2: {ran_list_apod[1]['explanation']}\n\nPic 3: {ran_list_apod[2]['explanation']}")
+    submission.reply(f"Pic 1 [{ran_list_apod[0]['title']}]: {ran_list_apod[0]['explanation']}\n\nPic 2 [{ran_list_apod[1]['title']}]: {ran_list_apod[1]['explanation']}\n\nPic 3[{ran_list_apod[2]['title']}]: {ran_list_apod[2]['explanation']}")
 
 
 #get pic from nasa post on reddit daily
@@ -146,7 +146,7 @@ def remove_pic():
 
 
 def main():
-    print("Script has started.")
+    print("ONLINE...")
     # daily single post
     schedule.every().day.at("00:00").do(reddit_post_daily)
 
@@ -166,7 +166,7 @@ def main():
         schedule.run_pending()
         time.sleep(40)
 
-print("checking")
+
 if __name__ == "__main__":
     main()
 

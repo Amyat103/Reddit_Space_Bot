@@ -6,6 +6,7 @@ the purpose of this bot is to post space-related pictures <br>
 <br>
 
 ## Deployment
+<br>
 This bot is currently deployed on Python Anytime (www.pythonanywhere.com)
 <br>
 
@@ -20,4 +21,4 @@ This bot is currently deployed on Python Anytime (www.pythonanywhere.com)
 <br>
 <img width="659" alt="Screenshot 2023-10-09 at 5 55 38 PM" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/ef2b59fb-5448-4c15-9286-71b49a82ead8">
 
-<img width="300" alt="Screenshot 2023-10-09 at 5 55 48 PM" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/9aa3571c-3fa4-4b4b-9b64-be080f6a2e14">
+<img width="375" alt="Screenshot 2023-10-09 at 5 55 48 PM" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/9aa3571c-3fa4-4b4b-9b64-be080f6a2e14">

@@ -3,6 +3,9 @@ Reddit Bot built with Python and PRAW <br> This program will post NASA's APOD(As
 This program is built following the PRAW documentation(https://praw.readthedocs.io/en/stable/index.html) <br>
 the purpose of this bot is to post and share space-related pictures <br>
 
+## Why I Built This Bot
+I built this bot because I've always been interested in space and love looking at pictures and articles about it. Making this bot that post picture of space and have explanation on the bottom is a way to share my interest to likeminded people since this is posted only in a subreddit about space.
+
 ### Installing PRAW and Requests
 
 These are the libraries you'll need
@@ -16,7 +19,7 @@ pip install requests
 This bot is currently deployed on Python Anytime (www.pythonanywhere.com)
 
 Example:
-With these lines inside main(), the program will check every 40 sec if it's time to execute reddit_post_dailt()
+With these lines inside main(), the program will check every 40 sec if it's time to execute reddit_post_daily()
 ```
 schedule.every().day.at("12:00").do(reddit_post_daily)
 while True:

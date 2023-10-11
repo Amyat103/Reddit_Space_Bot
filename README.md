@@ -4,7 +4,7 @@ This program is built following the PRAW documentation(https://praw.readthedocs.
 the purpose of this bot is to post and share space-related pictures <br>
 
 ## Why I Built This Bot
-I built this bot because I've always been interested in space and love looking at pictures and articles about it. Making this bot that post picture of space and have explanation on the bottom is a way to share my interest to likeminded people since this is posted only in a subreddit about space.
+I built this bot because I've always been interested in space and love looking at pictures and articles about it. Making this bot that posts a space picture and has an explanation on the bottom is a way to share my interest with like-minded people since this is posted only in a subreddit about space.
 
 ### Installing PRAW and Requests
 
@@ -19,10 +19,24 @@ pip install requests
 This bot is currently deployed on Python Anytime (www.pythonanywhere.com)
 
 Example:
-With these lines inside main(), the program will check every 40 sec if it's time to execute reddit_post_daily()
+With these lines inside main(), the program will check every 40 sec if it's time to execute the 4 functions that runs this bot
 ```
-schedule.every().day.at("12:00").do(reddit_post_daily)
-while True:
+def main():
+    print("BOT STARTED")
+    # daily single post
+    schedule.every().day.at("12:00").do(reddit_post_daily)
+
+    # deleting the image after posting
+    schedule.every().day.at("12:02").do(remove_pic)
+
+    # daily gallery post
+    schedule.every().day.at("17:00").do(reddit_post_rand)
+
+    # deleting the image after posting
+    schedule.every().day.at("17:02").do(remove_gal)
+
+
+    while True:
         schedule.run_pending()
         time.sleep(40)
 ```

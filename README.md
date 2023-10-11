@@ -4,7 +4,7 @@ This program is built following the PRAW documentation(https://praw.readthedocs.
 the purpose of this bot is to post and share space-related pictures <br>
 
 ## Why I Built This Bot
-I built this bot because I've always been interested in space and love looking at pictures and articles about it. Making this bot that posts a space picture and has an explanation on the bottom is a way to share my interest with like-minded people since this is posted only in a subreddit about space.
+I've always been interested in space and love looking at pictures and articles about it. Making this bot that posts a space picture and has an explanation on the bottom is a way to share my interest with like-minded people since this is posted only in a subreddit about space.
 
 ### Installing PRAW and Requests
 

@@ -8,6 +8,12 @@ I've always been interested in space and love looking at pictures and articles a
 
 ### Installing PRAW and Requests
 
+### prerequisite
+These are the libraries you'll have to install
+```
+pip install praw
+pip install requests
+```
 These are the libraries you'll need
 ```
 import praw
@@ -18,11 +24,7 @@ import datetime
 import schedule
 import time
 ```
-These are the libraries you'll have to install
-```
-pip install praw
-pip install requests
-```
+
 
 ## Deployment
 This bot is currently deployed on Python Anytime (www.pythonanywhere.com)

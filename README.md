@@ -17,7 +17,7 @@ pip install requests
 
 
 ## Deployment
-This bot is currently deployed on [Python Anywhere](www.pythonanywhere.com)
+This bot is currently deployed on [Python Anywhere](https://www.pythonanywhere.com)
 
 Example:
 With these lines inside main(), the program will check every 40 sec if it's time to execute the 4 functions that run this bot

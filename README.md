@@ -9,7 +9,16 @@ I've always been interested in space and love looking at pictures and articles a
 ### Installing PRAW and Requests
 
 These are the libraries you'll need
-
+```
+import praw
+import requests
+import json
+import os
+import datetime
+import schedule
+import time
+```
+These are the libraries you'll have to install
 ```
 pip install praw
 pip install requests

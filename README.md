@@ -45,9 +45,9 @@ def main():
 ## Example
 ### This is an example of Daily APOD Post, the bot will post this picture and comment right under the post with the explanation
 <br>
-<img width="654" alt="APOD Post by Bot" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/856723a6-a463-4a4f-bbf9-3b2c8ad2ccd3">
+<img width="667" alt="APOD Post" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/6a95a9ee-7fd0-4d81-b7d3-cdc7abfe0e92">
 
-<img width="732" alt="Explanation of Image" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/5d221fde-cfaa-42f2-a67b-edcfdc33a49e">
+<img width="726" alt="APOD Explanation" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/d35f5286-c365-4704-b625-be09651a91e1">
 
 ### This is an example of Daily Random Post, the bot will post 3 random APOD with an explanation in the comment
 <br>

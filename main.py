@@ -77,16 +77,17 @@ def reddit_post_rand():
 
 #get pic from nasa post on reddit daily
 def apod_request_single():
+    print("Requesting Single...")
     #APOD REQUEST
     APOD_params = {
         "date": "",
         "api_key": os.environ.get('NASA_API'),
     }
     r = requests.get("https://api.nasa.gov/planetary/apod", params=APOD_params)
-    print(r.status_code)
-    print(r)
+    # print(r.status_code)
+    # print(r)
     response = json.loads(r.text)
-    print(response)
+    # print(response)
     #getting the hd link
     img_link = response["hdurl"]
     print(img_link)
@@ -103,13 +104,14 @@ def apod_request_single():
 
 #APOD Request 3 random
 def apod_ran_req():
+    print("Requesting Random...")
     ran_params = {
         "count": 3,
         "api_key": os.environ.get('NASA_API'),
     }
     r = requests.get("https://api.nasa.gov/planetary/apod", params=ran_params)
     response = json.loads(r.text)
-    print(response)
+    # print(response)
     ran_im_links = []
     e = 0
     for item in response:

@@ -51,7 +51,7 @@ def main():
 
 ### This is an example of Daily Random Post, the bot will post 3 random APOD with an explanation in the comment
 <br>
-<img width="500" alt="Explanation of Images" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/601d3a4e-92fc-4325-95c7-2b2ea0a64313">
+<img width="800" alt="Explanation of Images" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/601d3a4e-92fc-4325-95c7-2b2ea0a64313">
 
 <img width="500" alt="Explanation of Images" src="https://github.com/Amyat103/Reddit_Space_Bot/assets/109713601/9aa3571c-3fa4-4b4b-9b64-be080f6a2e14">
 

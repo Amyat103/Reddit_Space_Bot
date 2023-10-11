@@ -14,16 +14,6 @@ These are the libraries you'll have to install
 pip install praw
 pip install requests
 ```
-These are the libraries you'll need
-```
-import praw
-import requests
-import json
-import os
-import datetime
-import schedule
-import time
-```
 
 
 ## Deployment

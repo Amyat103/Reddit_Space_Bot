@@ -8,7 +8,6 @@ I've always been interested in space and love looking at pictures and articles a
 
 ### Installing PRAW and Requests
 
-### prerequisite
 These are the libraries you'll have to install
 ```
 pip install praw
